@@ -14,15 +14,15 @@ int xdirection = 0; //setting the initial x direction as zero
 int ydirection = 0; //setting the initial Y direction as zero
 int swstate = 1; //inital switch state is one
 
-int xcontrol = 0//  initial state 
-int ycontrol = 0//final state
+int xcontrol = 0;//initial state 
+int ycontrol = 0;//final state
 
 void setup(){
   Serial.begin(115200);
   pinMode(swpin, INPUT);
 
   digitalWrite(swpin, HIGH); // the joystick is always high unless this button is pressed.
-
+  
 }
 
 void loop(){
@@ -47,20 +47,23 @@ void loop(){
 
   if(xdirection<425){
     xcontrol = 1;//up
-  }else if(xdirecion>465){
+    debug("up");
+  }else if(xdirection>465){
     xcontrol = 2;//down
+    debug(down);
   }else{
     xcontrol = 0;//return to inital state
   }
 
   if(ydirection<425){
     ycontrol = 1;//up
-  }else if(xdirecion>465){
+    debug(left);
+  }else if(ydirection>465){
     ycontrol = 2;//down
+    debug(right);
   }else{
     ycontrol = 0;//return to inital state
   }
-
 
 
   delay(500);
