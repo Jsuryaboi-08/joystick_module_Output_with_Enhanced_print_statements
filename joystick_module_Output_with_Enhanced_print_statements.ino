@@ -1,6 +1,6 @@
-const int xpin = 15;
-const int ypin = 0;
-const int swpin = 12;
+const int xpin = 0;
+const int ypin = 1;
+const int swpin = 5;
 
 #if DEBUG == 1
 #define debug(x) Serial.print(x)
@@ -31,41 +31,40 @@ void loop(){
   ydirection = analogRead(ypin);
   swstate = digitalRead(swpin);
 
-  debug("The state of the switch is: ");
-  debugln(swstate);
+  Serial.debug("The state of the switch is: ");
+  Serial.debugln(swstate);
 
-  debug("X: ");
-  debugln(xdirection);
+  Serial.debug("X: ");
+  Serial.debugln(xdirection);
 
-  debug("Y: ");
-  debugln(ydirection);
+  Serial.debug("Y: ");
+  Serial.debugln(ydirection);
 
 
   if(!swstate){
-    debug("Button is pressed");
+    Serial.debug("Button is pressed");
   }
 
   if(xdirection<425){
     xcontrol = 1;//up
-    debug("up");
+    Serial.debug("up");
   }else if(xdirection>465){
     xcontrol = 2;//down
-    debug(down);
+    Serial.debug(down);
   }else{
     xcontrol = 0;//return to inital state
   }
 
   if(ydirection<425){
     ycontrol = 1;//up
-    debug(left);
+    Serial.debug(left);
   }else if(ydirection>465){
     ycontrol = 2;//down
-    debug(right);
+    Serial.debug(right);
   }else{
     ycontrol = 0;//return to inital state
   }
 
-
-  delay(500);
+  Serial.delay(500);
 
 }
